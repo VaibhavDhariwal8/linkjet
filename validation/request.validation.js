@@ -11,3 +11,8 @@ export const loginPostRequestSchema = z.object({
   email: z.string().email(),
   password: z.string().min(4),
 });
+
+export const shortenPostRequestSchema = z.object({
+  url: z.string().url(),
+  code: z.string().optional(),
+});
