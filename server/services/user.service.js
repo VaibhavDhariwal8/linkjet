@@ -38,3 +38,12 @@ export async function createUser(
 
   return user;
 }
+
+export async function getUserById(id) {
+  const [user] = await db
+    .select()
+    .from(usersTable)
+    .where(eq(usersTable.id, id));
+
+  return user;
+}

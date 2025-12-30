@@ -1,4 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
+import { getMe } from "../api/auth.api";
 
 const AuthContext = createContext(null);
 
@@ -6,8 +7,29 @@ export function AuthProvider({ children }) {
   const [token, setToken] = useState(() => localStorage.getItem("token"));
   const [user, setUser] = useState(() => {
     const stored = localStorage.getItem("user");
-    return stored ? JSON.parse(stored) : null;
+
+    if (!stored || stored === "undefined") {
+      return null;
+    }
+
+    try {
+      return JSON.parse(stored);
+    } catch {
+      return null;
+    }
   });
+
+  useEffect(() => {
+    if (!token) return;
+
+    getMe(token).then((user) => {
+      setUser({
+        name: `${user.firstname} ${user.lastname}`,
+        initials: user.firstname[0] + user.lastname[0],
+        email: user.email,
+      });
+    });
+  }, [token]);
 
   const login = (token, user) => {
     localStorage.setItem("token", token);

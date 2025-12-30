@@ -18,9 +18,12 @@ export function authenticationMiddleware(req, res, next) {
 
   const [_, token] = authHeader.split(" ");
 
-  const payload = validateUserToken(token);
-
-  req.user = payload;
+  try {
+    const payload = validateUserToken(token);
+    req.user = payload;
+  } catch (err) {
+    return res.status(401).json({ error: "Invalid or expired token" });
+  }
   next();
 }
 

@@ -47,7 +47,7 @@ router.delete("/:id", ensureAuthenticated, async function (req, res) {
 
 router.get("/:shortCode", async function (req, res) {
   const code = req.params.shortCode;
-  const result = getUrlByShortCode(code);
+  const result = await getUrlByShortCode(code);
   if (!result) return res.status(404).json({ error: "Invalid URL" });
 
   return res.redirect(result.targetURL);

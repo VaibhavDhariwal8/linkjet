@@ -1,11 +1,35 @@
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { getUserUrls } from "../api/urls.api";
+import { useAuth } from "../context/AuthContext";
+import { deleteUrl } from "../api/urls.api";
+
 import Header from "../components/layout/Header";
 import Footer from "../components/layout/Footer";
 import StatsGrid from "../components/dashboard/StatsGrid";
 import LinksTable from "../components/dashboard/LinksTable";
-import { useNavigate } from "react-router-dom";
 
 export default function Dashboard() {
   const navigate = useNavigate();
+  const { token } = useAuth();
+  const [urls, setUrls] = useState([]);
+
+  useEffect(() => {
+    if (!token) return;
+    getUserUrls(token).then(setUrls);
+  }, [token]);
+
+  const handleDelete = async (id) => {
+    try {
+      await deleteUrl(token, id);
+
+      // Optimistic UI update
+      setUrls((prev) => prev.filter((url) => url.id !== id));
+    } catch (err) {
+      alert("Failed to delete link");
+    }
+  };
+
   return (
     <div className="text-slate-900 pb-20">
       <Header />
@@ -38,8 +62,8 @@ export default function Dashboard() {
             Shorten New Link
           </button>
         </div>
-        <StatsGrid />
-        <LinksTable />
+        <StatsGrid urls={urls} />
+        <LinksTable urls={urls} onDelete={handleDelete} />
       </main>
 
       <Footer />

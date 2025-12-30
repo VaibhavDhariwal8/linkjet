@@ -12,3 +12,17 @@ export async function login(email, password) {
 export async function signup(payload) {
   return api.post("/user/signup", payload);
 }
+
+export async function getMe(token) {
+  const res = await api.get("/user/me", {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+  return res.data;
+}
+
+export async function getUserUrls(token) {
+  const res = await api.get("/codes", {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+  return res.data.codes;
+}

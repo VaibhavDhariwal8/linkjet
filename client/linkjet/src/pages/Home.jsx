@@ -4,27 +4,27 @@ import ShortenBox from "../components/urls/ShortenBox";
 
 const Home = () => {
   return (
-    <div>
+    <div className="min-h-screen flex flex-col bg-gray-50">
       <Header />
 
       {/* HERO SECTION */}
       <section className="text-center pt-56 pb-20 px-4">
-        <div className="inline-flex items-center gap-2 mb-10 bg-white border border-gray-100 px-4 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-widest shadow-sm">
-          <span className="bg-black text-white px-1.5 py-0.5 rounded text-[8px] mr-1">
+        <div class="inline-flex items-center gap-2 mb-10 bg-white border border-gray-100 px-4 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-widest shadow-sm">
+          <span class="bg-black text-white px-1.5 py-0.5 rounded text-[8px] mr-1">
             NEW
           </span>
-          Make your guests feel special with Custom URLs
+          Make your links feel special with custom shortcodes
         </div>
 
-        <h1 className="text-5xl md:text-[78px] font-extrabold tracking-tight leading-[1.05] text-[#121212] mb-8">
+        <h1 class="text-5xl md:text-[78px] font-extrabold tracking-tight leading-[1.05] text-[#121212] mb-8">
           A link shortener that <br />
-          works like an <span className="pill-highlight">Optimizer</span>
+          works like an <span class="pill-highlight">Optimizer</span>
         </h1>
 
-        <p className="text-gray-500 max-w-2xl mx-auto text-lg md:text-xl leading-relaxed font-medium">
-          Great events deserve a system that does it all, from making tickets
-          and <br className="hidden md:block" /> smooth checkouts to helping you
-          market and track.
+        <p class="text-gray-500 max-w-2xl mx-auto text-lg md:text-xl leading-relaxed font-medium mb-12">
+          Great brands deserve a system that does it all, from making links and{" "}
+          <br class="hidden md:block" /> smooth redirects to helping you track
+          performance.
         </p>
 
         <ShortenBox />

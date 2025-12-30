@@ -9,7 +9,11 @@ function auth(token) {
 }
 
 export async function shortenUrl(token, url, code) {
-  return api.post("/shorten", { url, code }, auth(token));
+  return api.post(
+    "/shorten",
+    { url, code },
+    { headers: { Authorization: `Bearer ${token}` } }
+  );
 }
 
 export async function getUserUrls(token) {

@@ -30,7 +30,13 @@ const Header = () => {
               Dashboard
             </Link>
             <div className="w-px h-4 bg-gray-200"></div>
-            {!token ? <Link to="/login">login</Link> : <></>}
+            {!token ? (
+              <Link className="hover:text-black transition" to="/login">
+                login
+              </Link>
+            ) : (
+              <></>
+            )}
           </nav>
 
           {token ? (

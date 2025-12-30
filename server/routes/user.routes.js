@@ -6,6 +6,8 @@ import {
 import { hashPasswordUsingSalt } from "../utils/hash.js";
 import { createUser, getUserByEmail } from "../services/user.service.js";
 import { createUsertoken } from "../utils/token.js";
+import { ensureAuthenticated } from "../middlewares/auth.middleware.js";
+import { getUserById } from "../services/user.service.js";
 
 const router = express.Router();
 
@@ -73,6 +75,17 @@ router.post("/login", async (req, res) => {
   const token = await createUsertoken({ id: user.id });
 
   return res.json({ token });
+});
+
+router.get("/me", ensureAuthenticated, async (req, res) => {
+  const user = await getUserById(req.user.id);
+
+  return res.json({
+    id: user.id,
+    firstname: user.firstname,
+    lastname: user.lastname,
+    email: user.email,
+  });
 });
 
 export default router;
