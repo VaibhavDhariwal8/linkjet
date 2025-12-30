@@ -1,3 +1,4 @@
+import { Trash2 } from "lucide-react";
 const LinksTable = ({ urls, onDelete }) => {
   if (!urls.length) {
     return (
@@ -60,7 +61,7 @@ const LinksTable = ({ urls, onDelete }) => {
                   onClick={() => onDelete(url.id)}
                   className="p-2 rounded-xl action-btn-delete"
                 >
-                  🗑
+                  <Trash2 />
                 </button>
               </td>
             </tr>
