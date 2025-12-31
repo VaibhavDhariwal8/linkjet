@@ -12,7 +12,7 @@ app.use(express.json());
 app.use(authenticationMiddleware);
 app.use(
   cors({
-    origin: ["http://localhost:5173", "https://linkjet.vercel.app"],
+    origin: ["http://localhost:5173", "https://linkjet-six.vercel.app"],
     credentials: true,
   })
 );
