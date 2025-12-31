@@ -11,7 +11,24 @@ const Header = () => {
   }
 
   return (
-    <header className="header-pill">
+    <header
+      style={{
+        position: "fixed",
+        top: "24px",
+        left: "50%",
+        transform: "translateX(-50%)",
+        width: "90%",
+        maxWidth: "900px",
+        zIndex: 9999,
+        borderRadius: "999px",
+        border: "1px solid rgba(255, 255, 255, 0.5)",
+        backgroundColor: "rgba(255, 255, 255, 0.3)",
+        // These two lines are what your build tool was breaking:
+        backdropFilter: "blur(15px) saturate(180%)",
+        WebkitBackdropFilter: "blur(15px) saturate(180%)",
+      }}
+      className="header-pill"
+    >
       <div className="px-8 py-3 flex justify-between items-center">
         <div className="font-black text-xl tracking-tighter italic text-teal-600">
           LINKJET

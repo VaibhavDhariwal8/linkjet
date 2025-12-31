@@ -22,23 +22,6 @@ body {
   font-style: normal;
 }
 
-.header-pill {
-  position: fixed !important;
-  top: 24px !important;
-  left: 50% !important;
-  transform: translateX(-50%) !important;
-  width: 90% !important;
-  max-width: 900px !important;
-  z-index: 9999 !important;
-  border-radius: 999px !important;
-  border: 1px solid rgba(255, 255, 255, 0.5) !important;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05) !important;
-
-  background-color: rgba(255, 255, 255, 0.3) !important;
-  backdrop-filter: blur(15px) saturate(180%) !important;
-  -webkit-backdrop-filter: blur(15px) saturate(180%) !important;
-}
-
 .glass-card {
   background: rgba(255, 255, 255, 0.5);
   backdrop-filter: blur(8px);
