@@ -2,6 +2,7 @@ import express from "express";
 import { authenticationMiddleware } from "./middlewares/auth.middleware.js";
 import userRouter from "./routes/user.routes.js";
 import urlRouter from "./routes/url.routes.js";
+import statsRoutes from "./routes/stats.routes.js";
 import cors from "cors";
 
 const app = express();
@@ -17,6 +18,7 @@ app.use(
 );
 
 app.get("/health", (_, res) => res.send("ok"));
+app.use("/stats", statsRoutes);
 
 app.get("/", (req, res) => {
   return res.json({ status: "Server is up and running..." });

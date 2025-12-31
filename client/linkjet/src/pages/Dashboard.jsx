@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { getUserUrls } from "../api/urls.api";
 import { useAuth } from "../context/AuthContext";
 import { deleteUrl } from "../api/urls.api";
+import { getTopRegion } from "../api/stats.api";
 
 import Header from "../components/layout/Header";
 import Footer from "../components/layout/Footer";
@@ -13,10 +14,39 @@ export default function Dashboard() {
   const navigate = useNavigate();
   const { token } = useAuth();
   const [urls, setUrls] = useState([]);
+  const [topRegion, setTopRegion] = useState(null);
 
   useEffect(() => {
     if (!token) return;
-    getUserUrls(token).then(setUrls);
+
+    const refreshStats = async () => {
+      const [urlsRes, regionRes] = await Promise.all([
+        getUserUrls(token),
+        getTopRegion(token),
+      ]);
+
+      setUrls(urlsRes);
+      setTopRegion(regionRes);
+    };
+
+    refreshStats();
+
+    const onFocus = () => {
+      if (document.visibilityState === "visible") {
+        refreshStats();
+      }
+    };
+
+    document.addEventListener("visibilitychange", onFocus);
+
+    return () => {
+      document.removeEventListener("visibilitychange", onFocus);
+    };
+  }, [token]);
+
+  useEffect(() => {
+    if (!token) return;
+    getTopRegion(token).then(setTopRegion);
   }, [token]);
 
   const handleDelete = async (id) => {
@@ -62,7 +92,7 @@ export default function Dashboard() {
             Shorten New Link
           </button>
         </div>
-        <StatsGrid urls={urls} />
+        <StatsGrid urls={urls} topRegion={topRegion} />
         <LinksTable urls={urls} onDelete={handleDelete} />
       </main>
 

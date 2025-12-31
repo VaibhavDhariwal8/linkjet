@@ -2,7 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 
 const Header = () => {
-  const { token, logout } = useAuth();
+  const { token, user, logout } = useAuth();
   const navigate = useNavigate();
 
   function handleLogout() {
@@ -41,12 +41,16 @@ const Header = () => {
 
           {token ? (
             <div className="flex items-center gap-6">
-              <span className="text-xs font-bold text-gray-400 uppercase tracking-widest">
-                Hi, Vaibhav
-              </span>
-              <div className="w-10 h-10 rounded-full bg-teal-100 border border-teal-200 flex items-center justify-center font-bold text-teal-700">
-                VD
-              </div>
+              {user && (
+                <>
+                  <span className="text-xs font-bold text-gray-400 uppercase tracking-widest">
+                    Hi, {user.name}
+                  </span>
+                  <div className="w-10 h-10 rounded-full bg-teal-100 border border-teal-200 flex items-center justify-center font-bold text-teal-700">
+                    {user.initials.toUpperCase()}
+                  </div>
+                </>
+              )}
               <Link
                 onClick={handleLogout}
                 className="text-xs font-bold text-red-500 hover:underline"

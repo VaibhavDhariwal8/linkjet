@@ -1,4 +1,4 @@
-const StatsGrid = ({ urls }) => {
+const StatsGrid = ({ urls, topRegion }) => {
   const totalClicks = urls.reduce((sum, u) => sum + (u.clicks ?? 0), 0);
 
   const activeLinks = urls.length;
@@ -23,7 +23,9 @@ const StatsGrid = ({ urls }) => {
         <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">
           Top Region
         </p>
-        <h2 className="text-2xl font-black">—</h2>
+        <h2 className="text-2xl font-black">
+          {topRegion ? topRegion.country : "—"}
+        </h2>
       </div>
     </div>
   );

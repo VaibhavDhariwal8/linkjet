@@ -23,6 +23,7 @@ export async function insertURL(url, code, userId) {
 export async function getUrlByShortCode(code) {
   const [result] = await db
     .select({
+      id: urlsTable.id,
       targetURL: urlsTable.targetURL,
     })
     .from(urlsTable)

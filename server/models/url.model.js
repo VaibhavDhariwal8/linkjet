@@ -1,4 +1,11 @@
-import { pgTable, uuid, varchar, text, timestamp } from "drizzle-orm/pg-core";
+import {
+  pgTable,
+  uuid,
+  varchar,
+  text,
+  timestamp,
+  integer,
+} from "drizzle-orm/pg-core";
 import { usersTable } from "./user.model.js";
 
 export const urlsTable = pgTable("urls", {
@@ -10,6 +17,8 @@ export const urlsTable = pgTable("urls", {
   userId: uuid("user_id")
     .references(() => usersTable.id)
     .notNull(),
+
+  clicks: integer("clicks").default(0).notNull(),
 
   createdAt: timestamp("created_at").defaultNow().notNull(),
   updatedAt: timestamp("updated_at").$onUpdate(() => new Date()),

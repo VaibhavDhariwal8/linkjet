@@ -5,7 +5,9 @@ import { insertURL, getUrlByShortCode } from "../services/url.service.js";
 import { getCodesByUserId } from "../services/url.service.js";
 import db from "../db/index.js";
 import { urlsTable } from "../models/url.model.js";
-import { and, eq } from "drizzle-orm";
+import { urlClicksTable } from "../models/urlClicks.model.js";
+import { and, eq, sql } from "drizzle-orm";
+import { getCountry } from "../utils/geo.js";
 
 const router = express.Router();
 
@@ -45,12 +47,27 @@ router.delete("/:id", ensureAuthenticated, async function (req, res) {
   return res.status(200).json({ delete: true });
 });
 
-router.get("/:shortCode", async function (req, res) {
+router.get("/:shortCode", async (req, res) => {
   const code = req.params.shortCode;
-  const result = await getUrlByShortCode(code);
-  if (!result) return res.status(404).json({ error: "Invalid URL" });
 
-  return res.redirect(result.targetURL);
+  const url = await getUrlByShortCode(code);
+  if (!url) return res.status(404).json({ error: "Invalid URL" });
+
+  const country = getCountry(req);
+
+  // increment clicks
+  await db
+    .update(urlsTable)
+    .set({ clicks: sql`${urlsTable.clicks} + 1` })
+    .where(eq(urlsTable.id, url.id));
+
+  // store geo click
+  await db.insert(urlClicksTable).values({
+    urlId: url.id,
+    country,
+  });
+
+  return res.redirect(url.targetURL);
 });
 
 export default router;
