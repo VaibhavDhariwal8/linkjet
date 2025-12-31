@@ -13,9 +13,5 @@ export async function getTopRegion(token) {
     },
   });
 
-  if (!res.ok) {
-    throw new Error("Failed to fetch top region");
-  }
-
-  return res.json();
+  return res.data; // ✅ Axios way
 }
