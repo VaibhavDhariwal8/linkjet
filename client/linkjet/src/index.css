@@ -32,18 +32,19 @@ body {
 
   width: 90%;
   max-width: 900px;
-  z-index: 1000;
+  z-index: 9999;
 
-  background-color: rgba(255, 255, 255, 0.3) !important;
-  backdrop-filter: blur(20px) saturate(180%) !important;
-  -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+  background: rgba(255, 255, 255, 0.4) !important;
+
+  backdrop-filter: blur(16px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
+
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
 
   border: 1px solid rgba(255, 255, 255, 0.5);
   border-radius: 999px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
-
-  transform: translateZ(0);
-  will-change: backdrop-filter;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04);
 }
 
 /* Glass Cards with Hover Animation */
