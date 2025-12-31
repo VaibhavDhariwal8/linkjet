@@ -49,7 +49,7 @@ const ShortenBox = () => {
 
           <div className="flex-1 flex items-center bg-gray-50/50 rounded-2xl px-4">
             <span className="text-gray-400 text-sm font-semibold">
-              linkjet.co/
+              linkjet.vaibhavdhariwal.site/
             </span>
             <input
               value={code}
