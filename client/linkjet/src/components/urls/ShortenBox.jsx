@@ -80,7 +80,7 @@ const ShortenBox = () => {
                   Link Created!
                 </p>
                 <p className="text-xl font-extrabold text-gray-900">
-                  linkjet.co/{result.shortCode}
+                  linkjet.vaibhavdhariwal.site/{result.shortCode}
                 </p>
               </div>
             </div>
