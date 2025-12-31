@@ -28,7 +28,7 @@ export default function Dashboard() {
           const regionRes = await getTopRegion(token);
           setTopRegion(regionRes?.country ?? null);
         } catch {
-          setTopRegion("—"); // graceful fallback
+          setTopRegion(null); // graceful fallback
         }
       } catch {
         alert("Failed to load dashboard");

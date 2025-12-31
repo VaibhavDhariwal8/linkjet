@@ -23,7 +23,7 @@ const StatsGrid = ({ urls, topRegion }) => {
         <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">
           Top Region
         </p>
-        <h2 className="text-2xl font-black">{topRegion?.country ?? "—"}</h2>
+        <h2 className="text-2xl font-black">{topRegion ?? "—"}</h2>
       </div>
     </div>
   );
