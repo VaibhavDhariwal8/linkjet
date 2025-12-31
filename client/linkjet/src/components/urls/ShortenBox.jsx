@@ -33,7 +33,9 @@ const ShortenBox = () => {
   }
 
   function copyToClipboard() {
-    navigator.clipboard.writeText(`linkjet.co/${result.shortCode}`);
+    navigator.clipboard.writeText(
+      `linkjet.vaibhavdhariwal.site/${result.shortCode}`
+    );
   }
 
   return (
