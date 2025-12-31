@@ -47,7 +47,7 @@ const Signup = () => {
                 <input
                   type="text"
                   onChange={(e) =>
-                    setForm({ ...form, firstName: e.target.value })
+                    setForm({ ...form, firstname: e.target.value })
                   }
                   placeholder="Jane"
                   className="w-full px-5 py-4 rounded-2xl bg-gray-50 border border-transparent focus:border-teal-500 focus:bg-white outline-none transition-all text-sm"
@@ -60,7 +60,7 @@ const Signup = () => {
                 <input
                   type="text"
                   onChange={(e) =>
-                    setForm({ ...form, lastName: e.target.value })
+                    setForm({ ...form, lastname: e.target.value })
                   }
                   placeholder="Doe"
                   className="w-full px-5 py-4 rounded-2xl bg-gray-50 border border-transparent focus:border-teal-500 focus:bg-white outline-none transition-all text-sm"
