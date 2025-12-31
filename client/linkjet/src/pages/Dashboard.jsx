@@ -20,13 +20,19 @@ export default function Dashboard() {
     if (!token) return;
 
     const refreshStats = async () => {
-      const [urlsRes, regionRes] = await Promise.all([
-        getUserUrls(token),
-        getTopRegion(token),
-      ]);
+      try {
+        const urlsRes = await getUserUrls(token);
+        setUrls(urlsRes);
 
-      setUrls(urlsRes);
-      setTopRegion(regionRes);
+        try {
+          const regionRes = await getTopRegion(token);
+          setTopRegion(regionRes);
+        } catch {
+          setTopRegion("—"); // graceful fallback
+        }
+      } catch {
+        alert("Failed to load dashboard");
+      }
     };
 
     refreshStats();
@@ -38,15 +44,7 @@ export default function Dashboard() {
     };
 
     document.addEventListener("visibilitychange", onFocus);
-
-    return () => {
-      document.removeEventListener("visibilitychange", onFocus);
-    };
-  }, [token]);
-
-  useEffect(() => {
-    if (!token) return;
-    getTopRegion(token).then(setTopRegion);
+    return () => document.removeEventListener("visibilitychange", onFocus);
   }, [token]);
 
   const handleDelete = async (id) => {
