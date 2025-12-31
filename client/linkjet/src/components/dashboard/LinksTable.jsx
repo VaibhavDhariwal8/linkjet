@@ -42,7 +42,7 @@ const LinksTable = ({ urls, onDelete }) => {
 
               <td className="px-8 py-6">
                 <span className="text-teal-600 font-bold text-sm">
-                  linkjet.co/{url.shortCode}
+                  linkjet.vaibhavdhariwal.site/{url.shortCode}
                 </span>
               </td>
 
