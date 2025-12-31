@@ -25,7 +25,7 @@ export function AuthProvider({ children }) {
     getMe(token).then((user) => {
       setUser({
         name: `${user.firstname}`,
-        initials: user.firstname[0] + user.lastname[0] ?? "",
+        initials: user.firstname[0],
         email: user.email,
       });
     });
