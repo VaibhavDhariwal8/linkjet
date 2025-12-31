@@ -16,6 +16,8 @@ app.use(
   })
 );
 
+app.get("/health", (_, res) => res.send("ok"));
+
 app.get("/", (req, res) => {
   return res.json({ status: "Server is up and running..." });
 });
