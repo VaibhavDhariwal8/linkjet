@@ -23,29 +23,22 @@ body {
 }
 
 .header-pill {
-  position: fixed;
-  top: 24px;
-  left: 0;
-  right: 0;
-  margin-left: auto;
-  margin-right: auto;
-  width: 90%;
-  max-width: 900px;
-  z-index: 9999;
+  position: fixed !important;
+  top: 24px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  width: 90% !important;
+  max-width: 900px !important;
+  z-index: 9999 !important;
+  border-radius: 999px !important;
+  border: 1px solid rgba(255, 255, 255, 0.5) !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05) !important;
 
-  background: rgba(255, 255, 255, 0.4) !important;
-
-  backdrop-filter: blur(16px) saturate(180%) !important;
-  -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
-
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  border-radius: 999px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04);
-
-  transform: translateZ(0);
+  background-color: rgba(255, 255, 255, 0.3) !important;
+  backdrop-filter: blur(15px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(15px) saturate(180%) !important;
 }
 
-/* Glass Cards with Hover Animation */
 .glass-card {
   background: rgba(255, 255, 255, 0.5);
   backdrop-filter: blur(8px);
