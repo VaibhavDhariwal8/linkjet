@@ -11,9 +11,9 @@
 
 ## 📸 Screenshots
 
-|                                 Dashboard View                                  |                                   Analytics View                                    |
-| :-----------------------------------------------------------------------------: | :---------------------------------------------------------------------------------: |
-| ![Dashboard Placeholder](https://via.placeholder.com/400x200?text=Dashboard+UI) | ![Analytics Placeholder](https://via.placeholder.com/400x200?text=Analytics+Charts) |
+|                         Dashboard View                          |                         Analytics View                          |
+| :-------------------------------------------------------------: | :-------------------------------------------------------------: |
+| ![Dashboard Placeholder](./client/linkjet/public/dashboard.png) | ![Analytics Placeholder](./client/linkjet/public/analytics.png) |
 
 ---
 
