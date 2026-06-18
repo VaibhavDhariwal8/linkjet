@@ -8,7 +8,8 @@
     "dev": "node --watch index.js",
     "start": "node index.js",
     "db:push": "drizzle-kit push",
-    "db:studio": "drizzle-kit studio"
+    "db:studio": "drizzle-kit studio",
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
   },
   "author": "Vaibhav Dhariwal",
   "license": "ISC",
@@ -17,6 +18,8 @@
     "@types/node": "^25.0.3",
     "@types/pg": "^8.16.0",
     "drizzle-kit": "^0.31.8",
+    "jest": "^30.4.2",
+    "supertest": "^7.2.2",
     "tsx": "^4.21.0"
   },
   "dependencies": {
